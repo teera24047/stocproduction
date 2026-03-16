@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stocproduction-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: backend
+        # --- แก้ไข 2 บรรทัดนี้ ---
+        image: asasqw36/stocproduction-backend:latest # ใส่ชื่อ Docker Hub ของคุณ
+        imagePullPolicy: Always # บังคับให้ K8s ดึงไฟล์ใหม่จาก Cloud ทุกครั้งที่รัน
+        # -----------------------
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DB_HOST
+          value: "mysql-service"
+        # ... ส่วนอื่นๆ คงเดิม ...

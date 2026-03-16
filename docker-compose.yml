@@ -1,0 +1,36 @@
+services:
+  # 1. ฐานข้อมูล MySQL
+  db:
+    image: mysql:latest
+    container_name: inventory-db-container
+    environment:
+      MYSQL_ROOT_PASSWORD: mysecretpassword
+      MYSQL_DATABASE: inventory_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - inventory-db-data:/var/lib/mysql # <--- เรียกใช้ชื่อนี้
+
+  # 2. ฝั่ง Backend (API)
+  backend:
+    build: ./backend
+    container_name: inventory-backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+
+  # 3. ฝั่ง Frontend (หน้าเว็บ)
+  frontend:
+    build: ./inventory-frontend
+    container_name: inventory-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+# 🌟 ประกาศชื่อ Volume ให้ตรงกับข้างบน 🌟
+volumes:
+  inventory-db-data: # <--- ต้องระบุชื่อให้ตรงกันเป๊ะๆ ตรงนี้ครับ

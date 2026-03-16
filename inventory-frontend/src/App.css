@@ -1,0 +1,128 @@
+/* ตั้งค่าพื้นหลังสีเทาอ่อนแบบ Facebook และฟอนต์ที่อ่านง่าย */
+body {
+  background-color: #f0f2f5;
+  margin: 0;
+  font-family: Segoe UI, Helvetica, Arial, sans-serif;
+  color: #050505;
+}
+
+/* แถบนำทางด้านบน */
+.navbar {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar h1 {
+  color: #1877f2; /* สีน้ำเงิน Facebook */
+  margin: 0;
+  font-size: 24px;
+}
+
+/* คอนเทนเนอร์หลัก จัดแบ่งเป็น 2 คอลัมน์ */
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.left-panel {
+  flex: 1; /* กินพื้นที่ 1 ส่วน */
+}
+
+.right-panel {
+  flex: 2; /* กินพื้นที่ 2 ส่วน (กว้างกว่า) */
+}
+
+/* กล่องเนื้อหาสีขาว (Card) */
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ced0d4;
+  padding-bottom: 10px;
+  color: #050505;
+}
+
+/* การจัดฟอร์ม */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #65676b;
+  font-size: 14px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: #f0f2f5;
+  font-size: 15px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #1877f2;
+}
+
+/* ปุ่มสีน้ำเงิน */
+.btn-primary {
+  background-color: #1877f2;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #166fe5;
+}
+
+/* ตารางแสดงข้อมูล */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: #f0f2f5;
+  color: #65676b;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ced0d4;
+  font-weight: 600;
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #ced0d4;
+}
+
+.table tr:hover {
+  background-color: #f0f2f5;
+}

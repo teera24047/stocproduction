@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+node_modules/
+.env
+inventory-db-data/
+*.log

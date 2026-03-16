@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stocproduction-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: asasqw36/stocproduction-frontend:latest
+        imagePullPolicy: IfNotPresent # บังคับใช้ Image ในเครื่องเหมือนเดิม
+        ports:
+        - containerPort: 80 # ปกติ Frontend ที่ Build แล้วจะรันบน Port 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 5173      # พอร์ตที่เราจะใช้เข้าผ่าน Browser (localhost:5173)
+      targetPort: 80  # พอร์ตข้างใน Container
+  type: LoadBalancer  # สำหรับ Docker Desktop จะช่วยให้เข้าผ่าน localhost ได้เลย
